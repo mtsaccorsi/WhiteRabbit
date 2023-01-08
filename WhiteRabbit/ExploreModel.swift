@@ -15,7 +15,7 @@ struct Shows: Codable {
 struct ShowsList: Codable {
     let id: Int
     let name: String
-    let overview: String?
+    let overview: String
     let poster_path: String
     let vote_average: Double
 }

@@ -32,8 +32,8 @@ struct ExploreView: View {
                         ForEach(exploreVM.showsList, id: \.id) { show in
                             ExploreDetailView(shows: show)
                                 .onTapGesture {
-                                    showingSheet.toggle()
                                     exploreVM.showDetails(showID: show.id)
+                                    showingSheet.toggle()
                                 }
                                 .sheet(isPresented: $showingSheet) {
                                     ForEach(exploreVM.showDetail, id: \.id) { info in

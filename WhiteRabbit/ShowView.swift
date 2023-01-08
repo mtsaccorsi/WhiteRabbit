@@ -17,8 +17,15 @@ struct ShowView: View {
             VStack {
                 Text("\(showsInfo.name)")
                     .bold()
+                    .padding()
                 Text("\(showsInfo.overview)")
-                
+                Grid {
+                    GridRow {
+                        Text("Qtd. episódios: \(showsInfo.number_of_episodes)")
+                        Text("Qtd. temporadas: \(showsInfo.number_of_seasons)")
+                    }
+                }
+                .padding()
             }
         }
     }
