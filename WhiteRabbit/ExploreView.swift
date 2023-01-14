@@ -11,7 +11,8 @@ struct ExploreView: View {
     
     @StateObject private var exploreVM = ExploreViewModel()
     @State private var showingSheet = false
-        
+    @State private var selectedShow: ShowsList? = nil
+    
     var body: some View {
         
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -32,13 +33,11 @@ struct ExploreView: View {
                         ForEach(exploreVM.showsList, id: \.id) { show in
                             ExploreDetailView(shows: show)
                                 .onTapGesture {
-                                    exploreVM.showDetails(showID: show.id)
+                                    selectedShow = show
                                     showingSheet.toggle()
                                 }
-                                .sheet(isPresented: $showingSheet) {
-                                    ForEach(exploreVM.showDetail, id: \.id) { info in
-                                        ShowView(showsInfo: info)
-                                    }
+                                .sheet(item: $selectedShow) { overview in
+                                    ShowSheetView(shows: overview)
                                 }
                         }
                     }

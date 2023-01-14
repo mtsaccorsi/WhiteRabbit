@@ -12,7 +12,7 @@ struct Shows: Codable {
     let results: [ShowsList]
 }
 
-struct ShowsList: Codable {
+struct ShowsList: Codable, Identifiable {
     let id: Int
     let name: String
     let overview: String
@@ -21,11 +21,11 @@ struct ShowsList: Codable {
 }
 
 //MARK: - SEASONS
-struct ShowDetails: Codable {
-    let results: [Details]
+struct ShowsDetails: Codable {
+    let results: [ShowsDetailsList]
 }
 
-struct Details: Codable {
+struct ShowsDetailsList: Codable, Identifiable {
     let homepage: String
     let id: Int
     let name: String

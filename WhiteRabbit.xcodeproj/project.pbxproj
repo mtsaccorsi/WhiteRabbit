@@ -18,7 +18,7 @@
 		1A8D8384296506C6002F2876 /* WhiteRabbitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D8383296506C6002F2876 /* WhiteRabbitTests.swift */; };
 		1A8D838E296506C6002F2876 /* WhiteRabbitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D838D296506C6002F2876 /* WhiteRabbitUITests.swift */; };
 		1A8D8390296506C6002F2876 /* WhiteRabbitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D838F296506C6002F2876 /* WhiteRabbitUITestsLaunchTests.swift */; };
-		1A91DCAA296A117F00CCCE64 /* ShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A91DCA9296A117F00CCCE64 /* ShowView.swift */; };
+		1A91DCAA296A117F00CCCE64 /* ShowSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A91DCA9296A117F00CCCE64 /* ShowSheetView.swift */; };
 		1AF32A432968C55B0048EC77 /* ExploreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF32A422968C55B0048EC77 /* ExploreDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +54,7 @@
 		1A8D8389296506C6002F2876 /* WhiteRabbitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhiteRabbitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A8D838D296506C6002F2876 /* WhiteRabbitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteRabbitUITests.swift; sourceTree = "<group>"; };
 		1A8D838F296506C6002F2876 /* WhiteRabbitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteRabbitUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1A91DCA9296A117F00CCCE64 /* ShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowView.swift; sourceTree = "<group>"; };
+		1A91DCA9296A117F00CCCE64 /* ShowSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSheetView.swift; sourceTree = "<group>"; };
 		1AF32A422968C55B0048EC77 /* ExploreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,8 +109,8 @@
 				1A8D8372296506C4002F2876 /* WhiteRabbitApp.swift */,
 				1A45D47929679858003B77B1 /* HomeView.swift */,
 				1A8D8374296506C4002F2876 /* PersonalListView.swift */,
+				1A91DCA9296A117F00CCCE64 /* ShowSheetView.swift */,
 				1A45D47B29679998003B77B1 /* ExploreView.swift */,
-				1A91DCA9296A117F00CCCE64 /* ShowView.swift */,
 				1AF32A422968C55B0048EC77 /* ExploreDetailView.swift */,
 				1A45D47D29679EFE003B77B1 /* ExploreViewModel.swift */,
 				1A45D47F29679F5C003B77B1 /* ExploreModel.swift */,
@@ -280,7 +280,7 @@
 				1A45D47A29679858003B77B1 /* HomeView.swift in Sources */,
 				1A8D8375296506C4002F2876 /* PersonalListView.swift in Sources */,
 				1A45D47C29679998003B77B1 /* ExploreView.swift in Sources */,
-				1A91DCAA296A117F00CCCE64 /* ShowView.swift in Sources */,
+				1A91DCAA296A117F00CCCE64 /* ShowSheetView.swift in Sources */,
 				1A8D8373296506C4002F2876 /* WhiteRabbitApp.swift in Sources */,
 				1AF32A432968C55B0048EC77 /* ExploreDetailView.swift in Sources */,
 			);

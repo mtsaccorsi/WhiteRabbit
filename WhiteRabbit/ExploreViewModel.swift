@@ -10,7 +10,7 @@ import Foundation
 class ExploreViewModel: ObservableObject {
     
     @Published var showsList: [ShowsList] = []
-    @Published var showDetail: [Details] = []
+    @Published var showDetail: [ShowsDetailsList] = []
     
     func fetchShows() {
         if let urlAPI = URL(string: "https://api.themoviedb.org/3/discover/tv?api_key=5ef5b92a35a7b5ea80381518dfc23a00&language=pt-BR&sort_by=popularity.desc&page=1") {
@@ -26,7 +26,7 @@ class ExploreViewModel: ObservableObject {
                     if let showsAPI = try? JSONDecoder().decode(Shows.self, from: data!) {
                         DispatchQueue.main.async {
                             self.showsList.append(contentsOf: showsAPI.results)
-                            print(showsAPI)
+//                            print(showsAPI)
                         }
                     }
                 }
@@ -47,7 +47,7 @@ class ExploreViewModel: ObservableObject {
                 if error != nil {
                     print("There was an error")
                 } else if data != nil {
-                    if let showDetailAPI = try? JSONDecoder().decode(ShowDetails.self, from: data!) {
+                    if let showDetailAPI = try? JSONDecoder().decode(ShowsDetails.self, from: data!) {
                         DispatchQueue.main.async {
                             self.showDetail.append(contentsOf: showDetailAPI.results)
                             print(showDetailAPI)
