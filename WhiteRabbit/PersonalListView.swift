@@ -9,18 +9,22 @@ import SwiftUI
 
 struct PersonalListView: View {
     
-    var showTitles = ["Wandinha", "Noite Adentro", "The Last of Us"]
-    var movieTitles = ["Avatar", "Adão Negro", "A Escola do Bem e do Mal"]
+    @StateObject var exploreVM: ExploreViewModel
+    @State private var reloadView = false
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
+            
             List {
                 Section(header: Text("Séries"), footer: Text("Explore para adicionar séries.")) {
-                    ForEach(showTitles, id: \.self) { title in
+                    
+                    ForEach(Array(exploreVM.showTitles.enumerated()), id: \.1) { index, title in
                         CustomShowRowView(title: title)
                             .swipeActions {
                                 Button(role: .destructive) {
-                                    print("Delete")
+                                    // Delete the item
+                                    exploreVM.showTitles.remove(at: index)
+                                    print(exploreVM.showTitles)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -29,11 +33,12 @@ struct PersonalListView: View {
                 }
                 
                 Section(header: Text("Filmes"), footer: Text("Explore para adicionar filmes.")) {
-                    ForEach(movieTitles, id: \.self) { title in
+                    ForEach(Array(exploreVM.movieTitles.enumerated()), id: \.1) { index, title in
                         CustomMovieRowView(title: title)
                             .swipeActions {
                                 Button(role: .destructive) {
-                                    print("Delete")
+                                    exploreVM.showTitles.remove(at: index)
+                                    print(exploreVM.showTitles)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -42,17 +47,31 @@ struct PersonalListView: View {
                 }
             }
             .navigationTitle("Seus conteúdos")
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    NavigationLink(destination: ExploreView()) {
+//                        VStack {
+//                            Image(systemName: "globe")
+//                            Text("Explorar")
+//                                .font(.caption)
+//                        }
+//                    }
+//
+//                }
+//            }
         }
-        
     }
 }
 
 struct PersonalListView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonalListView()
+        let exploreVM = ExploreViewModel()
+        
+        return PersonalListView(exploreVM: exploreVM)
     }
 }
 
+// MARK: - Módulos Lista
 struct CustomMovieRowView: View {
     var title: String
     var body: some View {

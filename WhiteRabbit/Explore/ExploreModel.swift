@@ -21,17 +21,16 @@ struct ShowsList: Codable, Identifiable {
 }
 
 //MARK: - SEASONS
-struct ShowsDetails: Codable {
-    let results: [ShowsDetailsList]
-}
 
-struct ShowsDetailsList: Codable, Identifiable {
+struct ShowDetails: Codable, Identifiable {
     let homepage: String
     let id: Int
     let name: String
     let overview: String
+    let poster_path: String
     let number_of_episodes: Int
     let number_of_seasons: Int
+    let vote_average: Double
 }
 
 struct SeasonsInfo: Codable {

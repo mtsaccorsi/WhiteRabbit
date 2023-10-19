@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var exploreVM = ExploreViewModel()
+    
     var body: some View {
         TabView() {
             
-            PersonalListView()
+            PersonalListView(exploreVM: exploreVM)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Início")
                 }
+
             
-            ExploreView()
+            ExploreView(exploreVM: exploreVM)
                 .tabItem {
                     Image(systemName: "globe")
                     Text("Explorar")

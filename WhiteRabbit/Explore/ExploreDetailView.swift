@@ -14,7 +14,7 @@ struct ExploreDetailView: View {
     var body: some View {
 
             VStack {
-                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/\(shows.poster_path)")) { image in
+                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/\(String(describing: shows.poster_path))")) { image in
                     image
                         .resizable()
                 } placeholder: {
