@@ -27,15 +27,59 @@ struct ShowDetails: Codable, Identifiable {
     let id: Int
     let name: String
     let overview: String
-    let poster_path: String
-    let number_of_episodes: Int
-    let number_of_seasons: Int
-    let vote_average: Double
+    let posterPath: String
+    let numberOfEpisodes: Int
+    let numberOfSeasons: Int
+    let voteAverage: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case homepage
+        case id
+        case name
+        case overview
+        case posterPath = "poster_path"
+        case numberOfEpisodes = "number_of_episodes"
+        case numberOfSeasons = "number_of_seasons"
+        case voteAverage = "vote_average"
+    }
 }
 
 struct SeasonsInfo: Codable {
-    let episode_count: Int
+    let episodeCount: Int
     let id: Int
     let name: String
-    let season_number: Int
+    let seasonNumber: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case episodeCount = "episode_count"
+        case id
+        case name
+        case seasonNumber = "season_number"
+    }
+}
+
+//MARK: - MOVIES
+struct Movies: Codable {
+    let results: [MoviesList]
+}
+
+struct MoviesList: Codable, Identifiable {
+    let id: Int
+    let posterPath, releaseDate, title: String
+    let overview: String
+    let voteAverage: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case overview
+        case voteAverage = "vote_average"
+    }
+}
+
+enum MediaType: Int {
+    case series
+    case movies
 }

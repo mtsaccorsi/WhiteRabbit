@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+// MARK: - LIST VIEW
 struct ExploreView: View {
     
     @StateObject var exploreVM: ExploreViewModel
     
     @State private var showingSheet = false
     @State private var selectedShow: ShowDetails?
-
+    
     // Function to fetch and set show details
     func selectShow(_ show: ShowsList) {
         exploreVM.fetchShowDetails(showID: show.id)
@@ -23,7 +24,6 @@ struct ExploreView: View {
             print(selectedShow as Any)
         }
     }
-
     
     var body: some View {
         
@@ -40,37 +40,84 @@ struct ExploreView: View {
                 }
                 .padding()
                 
+                PickerView(exploreVM: exploreVM)
+                
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20){
-                        ForEach(exploreVM.showsList, id: \.id) { show in
-                            VStack {
-                                ExploreDetailView(shows: show)
-                                // TODO: - return details
-//                                    .onTapGesture {
-//                                        selectShow(show)
-//                                        showingSheet.toggle()
-//                                    }
-//                                    .sheet(item: $selectedShow) { overview in
-//                                        ShowSheetView(shows: overview)
-//                                    }
-                                Button {
-                                    exploreVM.addShowToPersonalList(title: show.name)
-                                    print(exploreVM.showTitles)
-                                    
-                                } label: {
-                                    Image(systemName: "plus.circle.fill")
-                                        .foregroundStyle(.white, .white, .green)
+                    // TODO: Alternate between tv and movie
+                    if exploreVM.selectedMediaType == MediaType.series {
+                        LazyVGrid(columns: columns, spacing: 20){
+                            ForEach(exploreVM.showsList, id: \.id) { show in
+                                VStack {
+                                    ShowView(shows: show)
+                                    // TODO: - return details
+                                    //                                    .onTapGesture {
+                                    //                                        selectShow(show)
+                                    //                                        showingSheet.toggle()
+                                    //                                    }
+                                    //                                    .sheet(item: $selectedShow) { overview in
+                                    //                                        ShowSheetView(shows: overview)
+                                    //                                    }
+                                    Button {
+                                        exploreVM.addShowToPersonalList(title: show.name)
+                                        print(exploreVM.showTitles)
+                                        
+                                    } label: {
+                                        Image(systemName: "plus.circle.fill")
+                                            .foregroundStyle(.white, .white, .green)
+                                    }
                                 }
+                                
                             }
-                            
-                        }
+                        }.task {exploreVM.fetchShows()}
+                    } else {
+                        LazyVGrid(columns: columns, spacing: 20){
+                            ForEach(exploreVM.moviesList, id: \.id) { movie in
+                                VStack {
+                                    MovieView(movies: movie)
+                                    // TODO: - return details
+                                    //                                    .onTapGesture {
+                                    //                                        selectShow(show)
+                                    //                                        showingSheet.toggle()
+                                    //                                    }
+                                    //                                    .sheet(item: $selectedShow) { overview in
+                                    //                                        ShowSheetView(shows: overview)
+                                    //                                    }
+                                    Button {
+                                        exploreVM.addMovieToPersonalList(title: movie.title)
+                                        print(exploreVM.movieTitles)
+                                        
+                                    } label: {
+                                        Image(systemName: "plus.circle.fill")
+                                            .foregroundStyle(.white, .white, .green)
+                                    }
+                                }
+                                
+                            }
+                        }.task {exploreVM.fetchMovies()}
                     }
-                }.task {exploreVM.fetchShows()}
+                }
             }
         }
     }
 }
 
+// MARK: - PICKER VIEW
+struct PickerView: View {
+    
+    @StateObject var exploreVM: ExploreViewModel
+    
+    var body: some View {
+        Picker(selection: $exploreVM.selectedMediaType, label: Text("Selecione um tipo de mídia")) {
+            Text("Séries").tag(MediaType.series)
+            Text("Filmes").tag(MediaType.movies)
+        }
+        .pickerStyle(SegmentedPickerStyle())
+    }
+}
+
+
+
+// MARK: - PREVIEW
 struct ExploreView_Previews: PreviewProvider {
     
     static var previews: some View {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExploreDetailView: View {
+struct ShowView: View {
     
     let shows: ShowsList
     
@@ -26,6 +26,10 @@ struct ExploreDetailView: View {
                 VStack {
                     Text("\(shows.name)")
                         .bold()
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
                     Text("\(shows.vote_average, specifier: "%.1f")")
                 }
             }
@@ -35,6 +39,6 @@ struct ExploreDetailView: View {
 
 struct ExploreDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ExploreDetailView(shows: .init(id: 1, name: "Wandinha", overview: "Inteligente, sarcástica e apática, Wandinha Addams pode estar meio morta por dentro, mas na Escola Nunca Mais ela vai fazer amigos, inimigos e investigar assassinatos.", poster_path: "/ooBR3qulC40ws0QkYBUAYFKmLRE.jpg", vote_average: 8.7))
+        ShowView(shows: .init(id: 1, name: "Wandinha", overview: "Inteligente, sarcástica e apática, Wandinha Addams pode estar meio morta por dentro, mas na Escola Nunca Mais ela vai fazer amigos, inimigos e investigar assassinatos.", poster_path: "/ooBR3qulC40ws0QkYBUAYFKmLRE.jpg", vote_average: 8.7))
     }
 }

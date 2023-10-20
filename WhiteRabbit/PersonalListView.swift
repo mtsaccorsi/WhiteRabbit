@@ -87,7 +87,7 @@ struct CustomShowRowView: View {
     var title: String
     var body: some View {
         HStack {
-            Image(systemName: "tv.inset.filled")
+            Image(systemName: "play.tv.fill")
                 .frame(width: 40, height: 40)
             Text(title)
         }
