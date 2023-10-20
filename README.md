@@ -16,7 +16,7 @@ Projeto em **SwiftUI** para controle e acompanhamento dos conteúdos digitais as
 
 <br><br>
 
-<b>API utilizada:</b> TheMovieDatabaseAPI
+<b>API utilizada:</b> TheMovieDatabase
 
 <br>
 
