@@ -37,8 +37,8 @@ struct PersonalListView: View {
                         CustomMovieRowView(title: title)
                             .swipeActions {
                                 Button(role: .destructive) {
-                                    exploreVM.showTitles.remove(at: index)
-                                    print(exploreVM.showTitles)
+                                    exploreVM.movieTitles.remove(at: index)
+                                    print(exploreVM.movieTitles)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -77,7 +77,8 @@ struct CustomMovieRowView: View {
     var body: some View {
         HStack {
             Image(systemName: "popcorn.fill")
-                .frame(width: 40, height: 40)
+                .resizable()
+                .frame(width: 20, height: 20)
             Text(title)
         }
     }
@@ -88,7 +89,8 @@ struct CustomShowRowView: View {
     var body: some View {
         HStack {
             Image(systemName: "play.tv.fill")
-                .frame(width: 40, height: 40)
+                .resizable()
+                .frame(width: 20, height: 20)
             Text(title)
         }
     }
