@@ -83,3 +83,10 @@ enum MediaType: Int {
     case series
     case movies
 }
+
+//MARK: - Error
+enum FetchError: Error {
+    case invalidURL
+    case networkError(Error)
+    case jsonDecodingError(Error)
+}

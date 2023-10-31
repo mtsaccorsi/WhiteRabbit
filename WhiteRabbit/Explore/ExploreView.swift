@@ -14,21 +14,16 @@ struct ExploreView: View {
     
     @State private var showingSheet = false
     @State private var selectedShow: ShowDetails?
+    @State private var showID: Int?
     
-    // Function to fetch and set show details
-    func selectShow(_ show: ShowsList) {
-        exploreVM.fetchShowDetails(showID: show.id)
-        // Delay the setting of selectedShow to ensure showDetail is updated
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            selectedShow = exploreVM.showDetail.first(where: { $0.id == show.id })
-            print(selectedShow as Any)
-        }
+    func didDismiss() {
+        selectedShow = nil
     }
     
     var body: some View {
         
         let columns = [GridItem(.flexible()), GridItem(.flexible())]
-        
+        // TODO: Add progress view
         NavigationView {
             VStack {
                 HStack {
@@ -43,20 +38,31 @@ struct ExploreView: View {
                 PickerView(exploreVM: exploreVM)
                 
                 ScrollView {
-                    // TODO: Alternate between tv and movie
                     if exploreVM.selectedMediaType == MediaType.series {
                         LazyVGrid(columns: columns, spacing: 20){
                             ForEach(exploreVM.showsList, id: \.id) { show in
                                 VStack {
                                     ShowView(shows: show)
-                                    // TODO: - return details
-                                    //                                    .onTapGesture {
-                                    //                                        selectShow(show)
-                                    //                                        showingSheet.toggle()
-                                    //                                    }
-                                    //                                    .sheet(item: $selectedShow) { overview in
-                                    //                                        ShowSheetView(shows: overview)
-                                    //                                    }
+                                    // get the ID and activates the sheet
+                                        .onTapGesture {
+                                            showID = show.id
+                                            showingSheet.toggle()
+                                        }
+                                    // shows the sheet when selectedShow is fully loaded with the current ID
+                                        .sheet(isPresented: $showingSheet, onDismiss: didDismiss) {
+                                            if let selectedShow {
+                                                ShowDetailView(showDetail: selectedShow)
+                                            } else {
+                                                ProgressView()
+                                                    .onAppear {
+                                                        exploreVM.fetchShowDetails(showID: showID!) { showDetails in
+                                                            selectedShow = showDetails
+                                                        }
+                                                    }
+                                            }
+                                        }
+                                    
+                                    
                                     Button {
                                         exploreVM.addShowToPersonalList(title: show.name)
                                         print(exploreVM.showTitles)
@@ -66,22 +72,20 @@ struct ExploreView: View {
                                             .foregroundStyle(.white, .white, .green)
                                     }
                                 }
-                                
                             }
-                        }.task {exploreVM.fetchShows()}
+                        }
+                        .task {exploreVM.fetchShows()}
+                        
+                        
                     } else {
                         LazyVGrid(columns: columns, spacing: 20){
                             ForEach(exploreVM.moviesList, id: \.id) { movie in
                                 VStack {
                                     MovieView(movies: movie)
-                                    // TODO: - return details
-                                    //                                    .onTapGesture {
-                                    //                                        selectShow(show)
-                                    //                                        showingSheet.toggle()
-                                    //                                    }
-                                    //                                    .sheet(item: $selectedShow) { overview in
-                                    //                                        ShowSheetView(shows: overview)
-                                    //                                    }
+                                    // TODO: - get the ID and activates the sheet
+                                    
+                                    // TODO: - shows the sheet when selectedShow is fully loaded with the current ID
+                                       
                                     Button {
                                         exploreVM.addMovieToPersonalList(title: movie.title)
                                         print(exploreVM.movieTitles)

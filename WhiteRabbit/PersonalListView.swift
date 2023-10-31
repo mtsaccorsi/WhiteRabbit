@@ -14,7 +14,6 @@ struct PersonalListView: View {
     
     var body: some View {
         NavigationView {
-            
             List {
                 Section(header: Text("Séries"), footer: Text("Explore para adicionar séries.")) {
                     

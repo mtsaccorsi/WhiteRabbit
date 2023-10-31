@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A29B9F12AE2185500ABE00B /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A29B9F02AE2185500ABE00B /* MovieView.swift */; };
+		1A3507062AE9EEA300AA5118 /* ShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3507052AE9EEA300AA5118 /* ShowDetailView.swift */; };
 		1A45D47A29679858003B77B1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D47929679858003B77B1 /* HomeView.swift */; };
 		1A45D47C29679998003B77B1 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D47B29679998003B77B1 /* ExploreView.swift */; };
 		1A45D47E29679EFE003B77B1 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D47D29679EFE003B77B1 /* ExploreViewModel.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		1A29B9F02AE2185500ABE00B /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
+		1A3507052AE9EEA300AA5118 /* ShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailView.swift; sourceTree = "<group>"; };
 		1A45D47929679858003B77B1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1A45D47B29679998003B77B1 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		1A45D47D29679EFE003B77B1 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				1A45D47B29679998003B77B1 /* ExploreView.swift */,
 				1AF32A422968C55B0048EC77 /* ShowView.swift */,
+				1A3507052AE9EEA300AA5118 /* ShowDetailView.swift */,
 				1A29B9F02AE2185500ABE00B /* MovieView.swift */,
 				1A45D47D29679EFE003B77B1 /* ExploreViewModel.swift */,
 				1A45D47F29679F5C003B77B1 /* ExploreModel.swift */,
@@ -290,6 +293,7 @@
 				1A45D48029679F5C003B77B1 /* ExploreModel.swift in Sources */,
 				1A45D47A29679858003B77B1 /* HomeView.swift in Sources */,
 				1A8D8375296506C4002F2876 /* PersonalListView.swift in Sources */,
+				1A3507062AE9EEA300AA5118 /* ShowDetailView.swift in Sources */,
 				1A29B9F12AE2185500ABE00B /* MovieView.swift in Sources */,
 				1A45D47C29679998003B77B1 /* ExploreView.swift in Sources */,
 				1A91DCAA296A117F00CCCE64 /* ShowSheetView.swift in Sources */,
