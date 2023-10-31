@@ -55,8 +55,10 @@ struct ExploreView: View {
                                             } else {
                                                 ProgressView()
                                                     .onAppear {
-                                                        exploreVM.fetchShowDetails(showID: showID!) { showDetails in
-                                                            selectedShow = showDetails
+                                                        if let showID {
+                                                            exploreVM.fetchShowDetails(showID: showID) { showDetails in
+                                                                selectedShow = showDetails
+                                                            }
                                                         }
                                                     }
                                             }
