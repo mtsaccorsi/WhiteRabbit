@@ -22,6 +22,7 @@
 		1A8D8390296506C6002F2876 /* WhiteRabbitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8D838F296506C6002F2876 /* WhiteRabbitUITestsLaunchTests.swift */; };
 		1A91DCAA296A117F00CCCE64 /* ShowSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A91DCA9296A117F00CCCE64 /* ShowSheetView.swift */; };
 		1AF32A432968C55B0048EC77 /* ShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF32A422968C55B0048EC77 /* ShowView.swift */; };
+		1AF64EE62AF1C66900EA28A5 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF64EE52AF1C66900EA28A5 /* MovieDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		1A8D838F296506C6002F2876 /* WhiteRabbitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteRabbitUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1A91DCA9296A117F00CCCE64 /* ShowSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSheetView.swift; sourceTree = "<group>"; };
 		1AF32A422968C55B0048EC77 /* ShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowView.swift; sourceTree = "<group>"; };
+		1AF64EE52AF1C66900EA28A5 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				1A45D47B29679998003B77B1 /* ExploreView.swift */,
 				1AF32A422968C55B0048EC77 /* ShowView.swift */,
 				1A3507052AE9EEA300AA5118 /* ShowDetailView.swift */,
+				1AF64EE52AF1C66900EA28A5 /* MovieDetailView.swift */,
 				1A29B9F02AE2185500ABE00B /* MovieView.swift */,
 				1A45D47D29679EFE003B77B1 /* ExploreViewModel.swift */,
 				1A45D47F29679F5C003B77B1 /* ExploreModel.swift */,
@@ -299,6 +302,7 @@
 				1A91DCAA296A117F00CCCE64 /* ShowSheetView.swift in Sources */,
 				1A8D8373296506C4002F2876 /* WhiteRabbitApp.swift in Sources */,
 				1AF32A432968C55B0048EC77 /* ShowView.swift in Sources */,
+				1AF64EE62AF1C66900EA28A5 /* MovieDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

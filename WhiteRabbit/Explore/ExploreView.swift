@@ -14,10 +14,13 @@ struct ExploreView: View {
     
     @State private var showingSheet = false
     @State private var selectedShow: ShowDetails?
+    @State private var selectedMovie: MovieDetail?
     @State private var showID: Int?
+    @State private var movieID: Int?
     
     func didDismiss() {
         selectedShow = nil
+        selectedMovie = nil
     }
     
     var body: some View {
@@ -51,7 +54,7 @@ struct ExploreView: View {
                                     // shows the sheet when selectedShow is fully loaded with the current ID
                                         .sheet(isPresented: $showingSheet, onDismiss: didDismiss) {
                                             if let selectedShow {
-                                                ShowDetailView(showDetail: selectedShow)
+                                                ShowDetailView(exploreVM: exploreVM, showDetail: selectedShow)
                                             } else {
                                                 ProgressView()
                                                     .onAppear {
@@ -63,16 +66,6 @@ struct ExploreView: View {
                                                     }
                                             }
                                         }
-                                    
-                                    
-                                    Button {
-                                        exploreVM.addShowToPersonalList(title: show.name)
-                                        print(exploreVM.showTitles)
-                                        
-                                    } label: {
-                                        Image(systemName: "plus.circle.fill")
-                                            .foregroundStyle(.white, .white, .green)
-                                    }
                                 }
                             }
                         }
@@ -84,18 +77,27 @@ struct ExploreView: View {
                             ForEach(exploreVM.moviesList, id: \.id) { movie in
                                 VStack {
                                     MovieView(movies: movie)
-                                    // TODO: - get the ID and activates the sheet
+                                    // get the ID and activates the sheet
+                                        .onTapGesture {
+                                            movieID = movie.id
+                                            showingSheet.toggle()
+                                        }
                                     
                                     // TODO: - shows the sheet when selectedShow is fully loaded with the current ID
-                                       
-                                    Button {
-                                        exploreVM.addMovieToPersonalList(title: movie.title)
-                                        print(exploreVM.movieTitles)
-                                        
-                                    } label: {
-                                        Image(systemName: "plus.circle.fill")
-                                            .foregroundStyle(.white, .white, .green)
-                                    }
+                                        .sheet(isPresented: $showingSheet, onDismiss: didDismiss) {
+                                            if let selectedMovie {
+                                                MovieDetailView(exploreVM: exploreVM, movieDetail: selectedMovie)
+                                            } else {
+                                                ProgressView()
+                                                    .onAppear {
+                                                        if let movieID {
+                                                            exploreVM.fetchMovieDetails(movieID: movieID) { movieDetails in
+                                                                selectedMovie = movieDetails
+                                                            }
+                                                        }
+                                                    }
+                                            }
+                                        }
                                 }
                                 
                             }

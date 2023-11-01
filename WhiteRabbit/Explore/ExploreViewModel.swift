@@ -38,7 +38,7 @@ class ExploreViewModel: ObservableObject {
         let request = URLRequest(url: urlAPI)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
+            if let error {
                 print("Error: \(error)")
                 return
             }
@@ -52,7 +52,6 @@ class ExploreViewModel: ObservableObject {
                 let showsAPI = try JSONDecoder().decode(Shows.self, from: data)
                 DispatchQueue.main.async {
                     self.showsList.append(contentsOf: showsAPI.results)
-                    // You can update your UI or perform other tasks with the data here
                 }
             } catch {
                 print("JSON decoding error: \(error)")
@@ -66,13 +65,13 @@ class ExploreViewModel: ObservableObject {
             print("Invalid URL")
             return
         }
-        
+
         var request = URLRequest(url: urlAPI)
         request.httpMethod = "GET"
         print(request)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
+            if let error {
                 print("Error: \(error)")
                 return
             }
@@ -103,7 +102,7 @@ class ExploreViewModel: ObservableObject {
         let request = URLRequest(url: urlAPI)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
+            if let error {
                 print("Error: \(error)")
                 return
             }
@@ -117,7 +116,6 @@ class ExploreViewModel: ObservableObject {
                 let moviesAPI = try JSONDecoder().decode(Movies.self, from: data)
                 DispatchQueue.main.async {
                     self.moviesList.append(contentsOf: moviesAPI.results)
-                    // You can update your UI or perform other tasks with the data here
                 }
             } catch {
                 print("JSON decoding error: \(error)")
@@ -126,6 +124,38 @@ class ExploreViewModel: ObservableObject {
         .resume()
     }
     
+    func fetchMovieDetails(movieID: Int, completion: @escaping (MovieDetail) -> Void) {
+        guard let urlAPI = URL(string: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=0c9eae08decfc76faaca1c17e7d18c65&language=pt-BR") else {
+            print("Invalid URL")
+            return
+        }
+
+        var request = URLRequest(url: urlAPI)
+        request.httpMethod = "GET"
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error {
+                print("Error: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+            
+            do {
+                let movieDetailAPI = try JSONDecoder().decode(MovieDetail.self, from: data)
+//                print(showDetailAPI)
+                completion(movieDetailAPI)
+
+            } catch {
+                print("JSON decoding error: \(error)")
+            }
+        }
+        .resume()
+    }
     
     
 }

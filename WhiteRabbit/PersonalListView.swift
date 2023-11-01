@@ -46,18 +46,6 @@ struct PersonalListView: View {
                 }
             }
             .navigationTitle("Seus conteúdos")
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    NavigationLink(destination: ExploreView()) {
-//                        VStack {
-//                            Image(systemName: "globe")
-//                            Text("Explorar")
-//                                .font(.caption)
-//                        }
-//                    }
-//
-//                }
-//            }
         }
     }
 }
